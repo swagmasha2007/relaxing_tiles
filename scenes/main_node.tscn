@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b2flm2vqc7h6q"]
+
+[ext_resource type="Texture2D" uid="uid://cn8owtxurn7im" path="res://assets/a75c77026a4df52ac6041aa5c95861ca.jpg" id="1_81nw7"]
+[ext_resource type="Texture2D" uid="uid://dx0ue2tcjrb2t" path="res://assets/Border).png" id="1_32378"]
+[ext_resource type="Texture2D" uid="uid://brmbaf1y6bbee" path="res://assets/Grid2).png" id="2_32378"]
+[ext_resource type="Script" uid="uid://cau8wm6g34x66" path="res://scripts/piece_spawner.gd" id="5_81nw7"]
+[ext_resource type="Script" uid="uid://ddl1qwfwr7m41" path="res://scripts/board.gd" id="6_63mur"]
+[ext_resource type="PackedScene" uid="uid://b2y856qjueva5" path="res://scenes/ui.tscn" id="6_brsxu"]
+[ext_resource type="PackedScene" uid="uid://dbw4eoirce3ii" path="res://scenes/tetromino.tscn" id="7_dqosy"]
+[ext_resource type="AudioStream" uid="uid://x2ql47a3l2k8" path="res://assets/b077c52da1.mp3" id="7_p3mmm"]
+[ext_resource type="PackedScene" uid="uid://bnluq1id80hw2" path="res://scenes/control.tscn" id="8_dqosy"]
+[ext_resource type="FontFile" uid="uid://c5cyw4yh84pcq" path="res://assets/Inkfree.ttf" id="8_mbi2d"]
+[ext_resource type="Script" uid="uid://b85s71j6u6f65" path="res://scripts/manager.gd" id="11_xd815"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81nw7"]
+bg_color = Color(0.2, 0.11372549, 0.42745098, 1)
+border_color = Color(0.2, 0.11372549, 0.42745098, 1)
+
+[node name="main_node" type="Node" unique_id=285313164]
+
+[node name="Manager" type="Node" parent="." unique_id=402762261]
+process_mode = 3
+script = ExtResource("11_xd815")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1671484840]
+position = Vector2(40, -20)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_81nw7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=306320694]
+position = Vector2(2, 7)
+zoom = Vector2(0.5, 0.5)
+
+[node name="border" type="TextureRect" parent="." unique_id=2013489878]
+offset_left = 942.0
+offset_top = 573.0
+offset_right = 2992.0
+offset_bottom = 4543.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_32378")
+
+[node name="gridtexture" type="TextureRect" parent="border" unique_id=1062505889]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -973.0
+offset_top = -1917.0
+offset_right = 947.0
+offset_bottom = 1923.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32378")
+stretch_mode = 1
+
+[node name="board" type="Node" parent="." unique_id=899033188]
+script = ExtResource("6_63mur")
+tetromino_scene = ExtResource("7_dqosy")
+
+[node name="piecespawn" type="Node" parent="." unique_id=92421818]
+script = ExtResource("5_81nw7")
+
+[node name="UI" parent="." unique_id=89058560 instance=ExtResource("6_brsxu")]
+visible = false
+
+[node name="Pause" parent="UI" unique_id=1673486968 instance=ExtResource("8_dqosy")]
+process_mode = 2
+size_flags_stretch_ratio = 0.39
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=177935478]
+stream = ExtResource("7_p3mmm")
+volume_db = 24.0
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
+[node name="Panel" type="Panel" parent="." unique_id=284149837]
+custom_minimum_size = Vector2(500, 100)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.0
+offset_top = -700.0
+offset_right = -165.0
+offset_bottom = -660.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_81nw7")
+
+[node name="Label" type="Label" parent="Panel" unique_id=886450419]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 10.0
+offset_right = 428.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("8_mbi2d")
+theme_override_font_sizes/font_size = 61
+text = "Relaxing tiles"
+
+[connection signal="pressed" from="UI/Pause/Panel/Button" to="Manager" method="_on_button_pressed"]
+
+[editable path="UI/Pause"]
