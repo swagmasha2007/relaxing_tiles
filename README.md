@@ -7,8 +7,13 @@
 С помощью кнопок A, S, D, Q, E, пробел, Escape можно подвинуть фиугру влево, вниз, вправо, повернуть влево, повернуть вправо, резко опустить, нажать на паузу соответственно.
 # Скриншоты
 Процесс игры
+
 <img width="554" height="1105" alt="image" src="https://github.com/user-attachments/assets/a125bc61-110c-42ee-9acd-990028e42f73" />
+
 Окно паузы
+
 <img width="556" height="1103" alt="image" src="https://github.com/user-attachments/assets/0dc43c9f-153e-4ac5-85ee-b52181126ed0" />
+
 Окно проигрыша
+
 <img width="557" height="1104" alt="image" src="https://github.com/user-attachments/assets/6d5ebb1c-b212-4a23-ba54-8240495f36b0" />
