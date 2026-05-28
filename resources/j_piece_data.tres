@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://bbrvg3gkflvuy"]
+
+[ext_resource type="Texture2D" uid="uid://dkq3d4507pe82" path="res://assets/cubs/plit_2.png" id="1_w02lv"]
+[ext_resource type="Script" uid="uid://b2m6bhdw5q8pn" path="res://scripts/piece_data.gd" id="2_qnrkx"]
+
+[resource]
+script = ExtResource("2_qnrkx")
+piece_texture = ExtResource("1_w02lv")
+tetromino_type = 3
+spawn_position = Vector2(-24, -456)
